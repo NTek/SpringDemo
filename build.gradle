@@ -1,0 +1,50 @@
+buildscript {
+  ext {
+    springBootVersion = '1.4.2.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+    maven { url 'http://repo1.maven.org/maven2' }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
+}
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+  baseName = 'MobileProtector'
+  version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter-security')
+  compile('org.springframework.boot:spring-boot-starter-web')
+
+  compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+  compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
+  compile group: 'org.codehaus.jackson', name: 'jackson-jaxrs', version: '1.9.13'
+
+  // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+  compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.4.0'
+  // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+  compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.4.0'
+
+
+
+
+
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+  //  https://mvnrepository.com/artifact/junit/junit
+  testCompile 'junit:junit:4.12'
+}
